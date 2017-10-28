@@ -1,0 +1,11 @@
+.selected-number {
+    background-color: #eee;
+    color: #ddd;
+    cursor: not-allowed;
+}
+
+.used-number {
+    background-color: #aaddaa;
+    color: #99bb99;
+    cursor: not-allowed;   
+}

@@ -1,0 +1,9 @@
+.numbers-span {
+    display: inline-block;
+    margin: 0.5em;
+    text-align: center;
+    background-color: #ccc;
+    width: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+}

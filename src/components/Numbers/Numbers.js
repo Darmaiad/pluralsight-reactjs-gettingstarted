@@ -1,0 +1,22 @@
+import React from 'react';
+//import _ from 'lodash';
+import range from 'lodash/range';
+import { Panel } from 'react-bootstrap';
+import './Numbers.css';
+
+const Numbers = (props) => {
+    /*Instead of creating arrayOfNumbers every time we render the component
+    we can place it as a property in the Numbers object, because
+    every function is an object (we will name it list)/
+    const arrayOfNumbers = range(1, 10); */
+    return (
+        <Panel className="text-center">
+            {Numbers.list.map((number, i) => 
+                <span key={i} className="numbers-span">{number}</span>
+            )}
+        </Panel>
+    );
+}
+Numbers.list = range(1, 10);
+
+export default Numbers;
