@@ -6,7 +6,7 @@ const GameButton = (props) => {
         <Col md={2} >
             <Button
                 bsStyle="primary"
-                disabled={false}
+                disabled={props.selectedNumbers.length === 0}
             >
                 =
             </Button>

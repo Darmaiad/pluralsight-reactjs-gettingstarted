@@ -7,9 +7,9 @@ var FontAwesome = require('react-fontawesome');
 
 const Stars = (props) => {
     
-    const numberOrStars = 1 + Math.floor(Math.random()*9);
+    //const numberOrStars = 1 + Math.floor(Math.random()*9);
     let stars = [];
-    stars = range(numberOrStars).map( i => 
+    stars = range(props.numberOfStars).map( i => 
         <FontAwesome
             key={i}
             name='star'
