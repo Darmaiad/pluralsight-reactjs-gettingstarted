@@ -7,6 +7,9 @@ import './Numbers.css';
 const Numbers = (props) => {
 
     const numberClassName = (number) => {
+        if (props.usedNumbers.indexOf(number) >= 0) {
+            return 'used-number';
+        }
         if (props.selectedNumbers.indexOf(number) >= 0) {
             return 'selected-number';
         }

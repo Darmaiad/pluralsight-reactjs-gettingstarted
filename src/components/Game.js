@@ -11,7 +11,9 @@ export default class Game extends React.Component {
         super();
         this.state = {
             selectedNumbers: [],
-            randomNumberOfStars: 1 + Math.floor(Math.random()*9),
+            randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
+            answerIsCorrect: null,
+            usedNumbers: [],
         };
     }
 
@@ -21,42 +23,74 @@ export default class Game extends React.Component {
             return; // aka: do nothing
         }
 
-        this.setState( prevState => ({
-            selectedNumbers: prevState.selectedNumbers.concat(clickedNumber)
+        this.setState(prevState => ({
+            selectedNumbers: prevState.selectedNumbers.concat(clickedNumber),
+            answerIsCorrect: null,          
         }));
     }
 
     unselectNumber = (clickedNumber) => {
 
-        this.setState( prevState => ({
+        this.setState(prevState => ({
             // To remove a number from an array, filter it away
             // filter() creates a new array with all elements that pass the test implemented by the provided function
             selectedNumbers: prevState.selectedNumbers
-                .filter( number => number !== clickedNumber)
+                .filter(number => number !== clickedNumber),
+
+            answerIsCorrect: null,
         }));
     }
 
+    checkAnswer = () => {
+        this.setState(prevState => ({
+            answerIsCorrect: prevState.randomNumberOfStars === prevState.selectedNumbers.reduce(
+                (acc, number) => acc + number, 0
+            ),
+        }));
+    };
+    acceptAnswer = () => {
+        this.setState(prevState => ({
+            usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
+            selectedNumbers: [],
+            answerIsCorrect: null,
+            randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
+        }));
+    };
+
     render() {
+
+        console.log(this.state)
         // We use state variables many time so we can destructure them from the state object
-        const {selectedNumbers, randomNumberOfStars } = this.state;
+        const { 
+            usedNumbers,
+            selectedNumbers, 
+            randomNumberOfStars, 
+            answerIsCorrect 
+        } = this.state;
+
         return (
             <Grid>
                 <h3>Play Nine9</h3>
                 <hr />
                 <Row>
-                    <Stars 
-                        numberOfStars = {randomNumberOfStars}
+                    <Stars
+                        numberOfStars={randomNumberOfStars}
                     />
-                    <GameButton selectedNumbers = {selectedNumbers}  />
+                    <GameButton
+                        selectedNumbers={selectedNumbers}
+                        checkAnswer={this.checkAnswer}
+                        answerIsCorrect={answerIsCorrect}
+                        acceptAnswer={this.acceptAnswer}
+                    />
                     <Answer
-                        selectedNumbers = {selectedNumbers} 
-                        unselectNumber = {this.unselectNumber} 
-
+                        selectedNumbers={selectedNumbers}
+                        unselectNumber={this.unselectNumber}
                     />
                 </Row>
-                <Numbers 
-                    selectedNumbers = {selectedNumbers} 
-                    selectNumber = {this.selectNumber}
+                <Numbers
+                    selectedNumbers={selectedNumbers}
+                    selectNumber={this.selectNumber}
+                    usedNumbers={usedNumbers}
                 />
             </Grid>
         );
