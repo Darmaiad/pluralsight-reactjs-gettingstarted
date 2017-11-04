@@ -7,6 +7,7 @@ import Stars from './Stars/Stars';
 import Answer from './Answer/Answer';
 import Numbers from './Numbers/Numbers';
 import GameIsDone from './GameIsDone/GameIsDone';
+import Header from './Header/Header';
 
 export default class Game extends React.Component {
     constructor() {
@@ -137,8 +138,7 @@ export default class Game extends React.Component {
 
         return (
             <Grid>
-                <h3>Play Nine9</h3>
-                <hr />
+                <Header />
                 <Row>
                     <Stars
                         numberOfStars={randomNumberOfStars}

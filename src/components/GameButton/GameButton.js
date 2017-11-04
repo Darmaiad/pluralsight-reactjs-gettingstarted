@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col } from 'react-bootstrap';
+import './GameButton.css';
 
 var FontAwesome = require('react-fontawesome');
 
@@ -34,6 +35,7 @@ const GameButton = (props) => {
                     bsStyle="primary"
                     disabled={props.selectedNumbers.length === 0}
                     onClick={props.checkAnswer}
+                    className="equalsign-size"
                 >
                     =
                 </Button>
@@ -50,7 +52,7 @@ const GameButton = (props) => {
                     onClick={props.redraw}
                     disabled={props.availableRedraws === 0}
                 >
-                    <FontAwesome name='refresh'/> {props.availableRedraws}
+                    <FontAwesome name='refresh' /> {props.availableRedraws}
                 </Button>
             </div>
             <br />
