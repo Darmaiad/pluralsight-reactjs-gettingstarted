@@ -15,6 +15,7 @@ export default class Game extends React.Component {
     }
 
     static calcRandomNoOfStars = () => 1 + Math.floor(Math.random() * 9);
+
     static initialState = () => ({
         selectedNumbers: [],
         randomNumberOfStars: Game.calcRandomNoOfStars(),
@@ -121,7 +122,7 @@ export default class Game extends React.Component {
         return false;
     };
 
-    resetGame = () => this.state = Game.initialState();        
+    resetGame = () => this.setState(Game.initialState());
     
     render() {
         // We use state variables many time so we can destructure them from the state object
