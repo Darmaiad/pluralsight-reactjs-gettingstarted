@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row } from 'react-bootstrap';
+import { Grid, Row, Button } from 'react-bootstrap';
 import range from 'lodash/range';
 import './Game.css';
 import GameButton from './GameButton/GameButton';
@@ -24,6 +24,18 @@ export default class Game extends React.Component {
         usedNumbers: [],
         availableRedraws: 5,
         gameIsDoneStatus: null,
+        timeRanOut: false,
+        btnColor: 'primary',
+        seconds: 5,
+        startingButton:
+            <Button
+                bsStyle="primary"
+                className="pull-right header-button"
+               // onClick={this.handleTimer}
+                disabled={false}
+            >
+                Start Game
+            </Button>,
     });
 
     selectNumber = (clickedNumber) => {
@@ -91,11 +103,14 @@ export default class Game extends React.Component {
             number => usedNumbers.indexOf(number) === -1
         );
 
-        return this.possibleCombinationSum(possibleNumbers, randomNumberOfStars );
+        return this.possibleCombinationSum(possibleNumbers, randomNumberOfStars);
     }
 
     updateGameIsDoneStatus = () => {
         this.setState(prevState => {
+            if (prevState.timeRanOut === true) {
+                return { gameIsDoneStatus: "You lost. There is no more time." };
+            }
             if (prevState.usedNumbers.length === 9) {
                 return { gameIsDoneStatus: "You actually played this game enough to win. Wow! Nice..." };
             }
@@ -104,6 +119,10 @@ export default class Game extends React.Component {
             }
         });
     };
+
+    setTimeRanOut = () => {
+        this.setState({timeRanOut: true}, this.updateGameIsDoneStatus);
+    }
 
     possibleCombinationSum = function (arr, n) {
         if (arr.indexOf(n) >= 0) { return true; }
@@ -123,8 +142,10 @@ export default class Game extends React.Component {
         return false;
     };
 
-    resetGame = () => this.setState(Game.initialState());
-    
+    resetGame = () => {
+        this.setState(Game.initialState());
+    }
+
     render() {
         // We use state variables many time so we can destructure them from the state object
         const {
@@ -138,7 +159,11 @@ export default class Game extends React.Component {
 
         return (
             <Grid>
-                <Header />
+                <Header
+                   seconds = {this.state.seconds}
+                   setTimeRanOut = {this.setTimeRanOut}
+                   startingButton = {this.state.startingButton}
+                />
                 <Row>
                     <Stars
                         numberOfStars={randomNumberOfStars}
