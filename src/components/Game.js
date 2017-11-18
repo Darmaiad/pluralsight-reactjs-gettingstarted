@@ -22,21 +22,18 @@ export default class Game extends React.Component {
         randomNumberOfStars: Game.calcRandomNoOfStars(),
         answerIsCorrect: null,
         usedNumbers: [],
-        availableRedraws: 5,
+        availableRedraws: 15,
         gameIsDoneStatus: null,
         timeRanOut: false,
-        btnColor: 'primary',
-        seconds: 5,
-        startingButton:
-            <Button
-                bsStyle="primary"
-                className="pull-right header-button"
-               // onClick={this.handleTimer}
-                disabled={false}
-            >
-                Start Game
-            </Button>,
+        gameStarted: false,
+        seconds: 85,
     });
+
+    startGame = () => {
+        this.setState({
+            gameStarted: true,
+        })
+    }
 
     selectNumber = (clickedNumber) => {
         // We need to ensure that once we have clicked a number, we cannot click it again
@@ -144,7 +141,7 @@ export default class Game extends React.Component {
 
     resetGame = () => {
         this.setState(Game.initialState());
-    }
+    };
 
     render() {
         // We use state variables many time so we can destructure them from the state object
@@ -160,38 +157,48 @@ export default class Game extends React.Component {
         return (
             <Grid>
                 <Header
-                   seconds = {this.state.seconds}
                    setTimeRanOut = {this.setTimeRanOut}
-                   startingButton = {this.state.startingButton}
+                   status={gameIsDoneStatus}
+                   startGame={this.startGame}
+                   seconds={this.state.seconds}
                 />
-                <Row>
-                    <Stars
-                        numberOfStars={randomNumberOfStars}
-                    />
-                    <GameButton
-                        selectedNumbers={selectedNumbers}
-                        checkAnswer={this.checkAnswer}
-                        answerIsCorrect={answerIsCorrect}
-                        acceptAnswer={this.acceptAnswer}
-                        redraw={this.redraw}
-                        availableRedraws={availableRedraws}
-                    />
-                    <Answer
-                        selectedNumbers={selectedNumbers}
-                        unselectNumber={this.unselectNumber}
-                    />
-                </Row>
-                {gameIsDoneStatus ?
-                    <GameIsDone
-                        gameIsDoneStatus={gameIsDoneStatus}
-                        resetGame={this.resetGame}
-                    />
+                {this.state.gameStarted ?
+                <div>
+                    <Row>
+                        <Stars
+                            numberOfStars={randomNumberOfStars}
+                        />
+                        <GameButton
+                            selectedNumbers={selectedNumbers}
+                            checkAnswer={this.checkAnswer}
+                            answerIsCorrect={answerIsCorrect}
+                            acceptAnswer={this.acceptAnswer}
+                            redraw={this.redraw}
+                            availableRedraws={availableRedraws}
+                        />
+                        <Answer
+                            selectedNumbers={selectedNumbers}
+                            unselectNumber={this.unselectNumber}
+                        />
+                    </Row>
+                    {gameIsDoneStatus ?
+                        <GameIsDone
+                            gameIsDoneStatus={gameIsDoneStatus}
+                            resetGame={this.resetGame}
+                        />
+                        :
+                        <Numbers
+                            selectedNumbers={selectedNumbers}
+                            selectNumber={this.selectNumber}
+                            usedNumbers={usedNumbers}
+                        />
+                    }
+                    </div>
                     :
-                    <Numbers
-                        selectedNumbers={selectedNumbers}
-                        selectNumber={this.selectNumber}
-                        usedNumbers={usedNumbers}
-                    />
+                    <div>
+                        <p>Game hasn't started yet</p>
+                        <p>Click on the button to start</p>
+                    </div>
                 }
             </Grid>
         );
