@@ -50,7 +50,7 @@ const GameButton = (props) => {
                     bsStyle="warning"
                     bsSize="xsmall"
                     onClick={props.redraw}
-                    disabled={props.availableRedraws === 0}
+                    disabled={props.availableRedraws === 0 || props.gameFinished}
                 >
                     <FontAwesome name='refresh' /> {props.availableRedraws}
                 </Button>

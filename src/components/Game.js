@@ -22,11 +22,11 @@ export default class Game extends React.Component {
         randomNumberOfStars: Game.calcRandomNoOfStars(),
         answerIsCorrect: null,
         usedNumbers: [],
-        availableRedraws: 15,
+        availableRedraws: 6,
         gameIsDoneStatus: null,
         timeRanOut: false,
         gameStarted: false,
-        seconds: 85,
+        seconds: 60,
     });
 
     startGame = () => {
@@ -175,6 +175,7 @@ export default class Game extends React.Component {
                             acceptAnswer={this.acceptAnswer}
                             redraw={this.redraw}
                             availableRedraws={availableRedraws}
+                            gameFinished={gameIsDoneStatus}
                         />
                         <Answer
                             selectedNumbers={selectedNumbers}

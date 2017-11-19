@@ -2,7 +2,13 @@ import React from 'react';
 import { Row, Button } from 'react-bootstrap';
 import './Header.css';
 
+import ReactDOM from 'react-dom';
+
 var FontAwesome = require('react-fontawesome');
+// Since Alertify does not export ES6 modules but node modules 
+var alertify = require('alertifyjs');
+alertify.set('notifier','position', 'bottom-center');
+
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -19,9 +25,10 @@ export default class Header extends React.Component {
                 onClick={initTimer}
                 disabled={false}
             >
-                Start Game
+                Start Game <FontAwesome name='hourglass' />
             </Button>,
         limbo: false,
+        alertWaitingTimeSecs: 2,
     });
 
     componentWillReceiveProps(nextProps) {
@@ -46,13 +53,15 @@ export default class Header extends React.Component {
         }                    
     }
 
-    handleTimer = () => {
+    handleTimer = () => {        
+        alertify.success('<strong>Game Started <i class="fa fa-play"></i></strong>', this.state.alertWaitingTimeSecs);
         this.setState(prevState => ({
                 seconds: prevState.seconds - 1,
-            }), this.timer);
+            }), () => {this.timer();});
     };
 
     handleSetTimeOut = () => {
+        alertify.error('<strong>Time Ran Out <i class="fa fa-stop"></i></strong>', this.state.alertWaitingTimeSecs);
         this.props.setTimeRanOut();
         clearInterval(this.interval);
     }
@@ -68,9 +77,9 @@ export default class Header extends React.Component {
                         <Button
                             bsStyle="primary"
                             className="pull-right header-button"
-                            disabled={false}
+                            disabled={true}
                         >
-                            0:{this.state.seconds}
+                            0:{this.state.seconds} <FontAwesome name='hourglass-start'/>
                         </Button>
                 }));
             }
@@ -81,9 +90,9 @@ export default class Header extends React.Component {
                     <Button
                         bsStyle="warning"
                         className="pull-right header-button"
-                        disabled={false}
+                        disabled={true}
                     >
-                        0:{this.state.seconds}
+                        0:{this.state.seconds} <FontAwesome name='hourglass-half'/>
                     </Button>
                 }));
             }
@@ -94,8 +103,9 @@ export default class Header extends React.Component {
                         <Button
                             bsStyle="danger"
                             className="pull-right header-button"
+                            disabled={true}                           
                         >
-                            0:{this.state.seconds}
+                            0:{this.state.seconds} <FontAwesome name='hourglass-end'/>
                         </Button>
                 }));
             }
@@ -106,8 +116,9 @@ export default class Header extends React.Component {
                         <Button
                             bsStyle="danger"
                             className="pull-right header-button"
+                            disabled={true}                            
                         >
-                            0:0{this.state.seconds}
+                            0:0{this.state.seconds} <FontAwesome name='hourglass-end'/>
                         </Button>
                 }));
             }
@@ -119,7 +130,7 @@ export default class Header extends React.Component {
                             className="pull-right header-button"
                             disabled={true}
                         >
-                            No more time
+                            No more time <FontAwesome name='hourglass-o'/>
                         </Button>,
                     limbo: true,
                 }), this.handleSetTimeOut());
