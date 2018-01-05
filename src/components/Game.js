@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Button } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import range from 'lodash/range';
 import './Game.css';
 import GameButton from './GameButton/GameButton';

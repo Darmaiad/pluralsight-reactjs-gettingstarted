@@ -2,8 +2,6 @@ import React from 'react';
 import { Row, Button } from 'react-bootstrap';
 import './Header.css';
 
-import ReactDOM from 'react-dom';
-
 var FontAwesome = require('react-fontawesome');
 // Since Alertify does not export ES6 modules but node modules 
 var alertify = require('alertifyjs');
