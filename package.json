@@ -1,7 +1,7 @@
 {
   "name": "pluralsight-reactjs-gettingstarted",
   "version": "1.0.0",
-  "description": "This project is based on the excellent Pluralsight course "React.js: Getting Started" by Samer Buna",
+  "description": "This project is based on the excellent Pluralsight course React.js: Getting Started by Samer Buna",
   "author": "Darmaiad",
   "repository": {
         "type": "git",
