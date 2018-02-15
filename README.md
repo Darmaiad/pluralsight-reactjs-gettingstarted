@@ -1,6 +1,6 @@
 # React.js: Getting Started (Pluralsight)
 
-This project is based on the excellent [Pluralsight](https://www.pluralsight.com/) course [React.js: Getting Started](https://app.pluralsight.com/library/courses/react-js-getting-started/table-of-contents) by [Samer Buna](https://github.com/samerbuna).
+This project is based on the [Pluralsight](https://www.pluralsight.com/) course: [React.js: Getting Started](https://app.pluralsight.com/library/courses/react-js-getting-started/table-of-contents) by [Samer Buna](https://github.com/samerbuna).
 
 ## Installation
 Assuming you have `npm` & `node.js` installed, you can either clone or download the repository. Navigate to the folder that you/was created. Then, run `npm install` on the command line to download the dependencies. Finally, run `npm start` to launch to the project.
