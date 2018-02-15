@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "This project is based on the excellent Pluralsight course React.js: Getting Started by Samer Buna",
   "author": "Darmaiad",
-  "repository": {
-        "type": "git",
-        "url": "https://github.com/Darmaiad/pluralsight-reactjs-gettingstarted.git"
-  },
   "dependencies": {
     "alertifyjs": "^1.11.0",
     "lodash": "^4.17.4",
@@ -21,5 +17,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/Darmaiad/pluralsight-reactjs-gettingstarted.git"
   }
 }
