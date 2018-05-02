@@ -1,6 +1,7 @@
 {
   "name": "pluralsight-reactjs-gettingstarted",
   "version": "1.0.0",
+  "homepage": "https://darmaiad.github.io/pluralsight-reactjs-gettingstarted",
   "description": "This project is based on the excellent Pluralsight course React.js: Getting Started by Samer Buna",
   "dependencies": {
     "alertifyjs": "^1.11.0",
@@ -29,7 +30,7 @@
   "author": "Darmaiad",
   "license": "ISC",
   "repository": {
-        "type": "git",
-        "url": "https://github.com/Darmaiad/pluralsight-reactjs-gettingstarted.git"
+    "type": "git",
+    "url": "https://github.com/Darmaiad/pluralsight-reactjs-gettingstarted.git"
   }
 }
