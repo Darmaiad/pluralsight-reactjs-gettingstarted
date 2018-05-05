@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Button } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import './Header.css';
 
 var FontAwesome = require('react-fontawesome');
@@ -140,8 +140,8 @@ export default class Header extends React.Component {
         return (
             <div>
                 <Row className="header-row">
-                    <h3 className="pull-left custom-header">Play Nine9</h3>
-                    {this.state.timerButton}
+                    <Col xs={12} md={6}><h3 className="custom-header">Play Nine9</h3></Col>
+                    <Col xs={12} md={6}>{this.state.timerButton}</Col>
                 </Row>
                 <hr className="header-line" />
             </div>
