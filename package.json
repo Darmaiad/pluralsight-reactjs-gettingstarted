@@ -25,7 +25,10 @@
     "alertifyjs",
     "es6",
     "reactjs",
-    "javascript"
+    "javascript",
+    "continuous-integration",
+    "continuous-deployment",
+    "travis-ci"
   ],
   "author": "Darmaiad",
   "license": "ISC",
