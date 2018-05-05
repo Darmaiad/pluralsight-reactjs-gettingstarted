@@ -8,4 +8,6 @@ Assuming you have `npm` & `node.js` installed, you can either clone or download 
 ## Description
 This is a simple game that matches numbers to stars. It includes an implementation of timer challenge issued by the course's author at the end of the course. I expanded on that by having the game to include a distinct start/stop phase. I used the React.js editions of [Bootstrap](https://react-bootstrap.github.io/getting-started.html) and [Font-Awesome](https://www.npmjs.com/package/react-fontawesome) instead of the conventional ones. Finally, I added some functionality with [Alertify.js](http://alertifyjs.com/).
 
+A [CI/CD](https://en.wikipedia.org/wiki/CI/CD) pipeline is set up for this project. Upon push, [Travis-CI](https://travis-ci.org/) will attempt to build the project and if the build is successful, it will be deployed at [Github Pages](https://pages.github.com/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
