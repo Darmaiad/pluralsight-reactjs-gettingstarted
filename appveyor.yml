@@ -29,7 +29,10 @@ platform:
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
+  # install modules
+  - npm install
 
+# Don't actually build.
 build: off
 
 skip_commits:
@@ -37,6 +40,8 @@ skip_commits:
     - '**/*.md'
 
 test_script:
+  # Output useful info for debugging.
   - node --version
   - npm --version
+  # run tests
   - npm test
