@@ -39,4 +39,4 @@ skip_commits:
 test_script:
   - node --version
   - npm --version
-  - bash tasks/e2e-%test_suite%.sh
+  - npm test
