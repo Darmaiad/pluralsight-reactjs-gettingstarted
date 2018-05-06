@@ -17,7 +17,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "prettify": "prettier --single-quote --write \"src/**/*.js\""
+    "prettify": "prettier --single-quote --write \"src/**/*.js\"",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "keywords": [
     "react",

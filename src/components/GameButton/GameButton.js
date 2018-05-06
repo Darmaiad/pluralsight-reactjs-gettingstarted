@@ -1,28 +1,34 @@
-import React from 'react';
-import { Button, Col } from 'react-bootstrap';
-import './GameButton.css';
+import React from "react";
+import { Button, Col } from "react-bootstrap";
+import "./GameButton.css";
 
-var FontAwesome = require('react-fontawesome');
+var FontAwesome = require("react-fontawesome");
 
 const GameButton = props => {
   let gameButton;
-  //console.log(props);
   switch (props.answerIsCorrect) {
     case true:
       gameButton = (
-        <Button bsStyle="success" onClick={props.acceptAnswer}><FontAwesome name="check" /></Button>
+        <Button bsStyle="success" onClick={props.acceptAnswer}>
+          <FontAwesome name="check" />
+        </Button>
       );
       break;
 
     case false:
       gameButton = (
-        <Button bsStyle="danger"><FontAwesome name="times" /></Button>
+        <Button bsStyle="danger">
+          <FontAwesome name="times" />
+        </Button>
       );
       break;
 
     default:
       gameButton = (
-        <Button bsStyle="primary" disabled={props.selectedNumbers.length === 0} onClick={props.checkAnswer}
+        <Button
+          bsStyle="primary"
+          disabled={props.selectedNumbers.length === 0}
+          onClick={props.checkAnswer}
           className="equalsign-size"
         >
           =
