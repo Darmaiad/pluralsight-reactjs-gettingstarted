@@ -28,7 +28,8 @@
     "javascript",
     "continuous-integration",
     "continuous-deployment",
-    "travis-ci"
+    "travis-ci",
+    "appveyor"
   ],
   "author": "Darmaiad",
   "license": "ISC",
