@@ -10,26 +10,19 @@ const GameButton = props => {
   switch (props.answerIsCorrect) {
     case true:
       gameButton = (
-        <Button bsStyle="success" onClick={props.acceptAnswer}>
-          <FontAwesome name="check" />
-        </Button>
+        <Button bsStyle="success" onClick={props.acceptAnswer}><FontAwesome name="check" /></Button>
       );
       break;
 
     case false:
       gameButton = (
-        <Button bsStyle="danger">
-          <FontAwesome name="times" />
-        </Button>
+        <Button bsStyle="danger"><FontAwesome name="times" /></Button>
       );
       break;
 
     default:
       gameButton = (
-        <Button
-          bsStyle="primary"
-          disabled={props.selectedNumbers.length === 0}
-          onClick={props.checkAnswer}
+        <Button bsStyle="primary" disabled={props.selectedNumbers.length === 0} onClick={props.checkAnswer}
           className="equalsign-size"
         >
           =
