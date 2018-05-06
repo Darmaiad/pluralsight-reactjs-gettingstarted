@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettify": "prettier --single-quote --write \"src/**/*.js\""
   },
   "keywords": [
     "react",
@@ -36,5 +37,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Darmaiad/pluralsight-reactjs-gettingstarted.git"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^2.9.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.5",
+    "prettier": "^1.12.1"
   }
 }
